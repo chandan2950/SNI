@@ -1,0 +1,70 @@
+# MERN Stack Insurance Platform - Task Breakdown
+
+## Planning Phase
+- [x] Analyze PolicyBazaar reference website
+- [x] Create comprehensive implementation plan
+- [x] Get user approval on plan and clarifications
+
+## Project Setup
+- [/] Initialize MERN project structure
+- [/] Set up backend (Node.js + Express + MongoDB)
+- [/] Set up frontend (React + Tailwind CSS + Redux)
+- [ ] Configure environment variables
+- [ ] Set up folder structure
+
+## Backend Development
+- [x] Create database schemas
+  - [x] User schema (Customer, Partner, Employee, Management)
+  - [x] Product schema
+  - [x] Enquiry/Form schema
+  - [x] Testimonial schema
+- [x] Implement authentication & authorization
+  - [x] JWT-based auth
+  - [x] Role-based access control (Customer, Partner, Employee, Management)
+- [x] Create API endpoints
+  - [x] Auth routes (register, login, logout)
+  - [x] Product routes
+  - [x] Enquiry form routes
+  - [x] User management routes
+  - [x] Testimonial routes
+- [x] Email service integration
+  - [x] Email ID creation
+  - [x] Email notifications
+
+## Frontend Development
+- [/] Set up Redux store and slices
+- [ ] Create reusable components
+  - [ ] Navbar
+  - [ ] Footer
+  - [ ] Product cards
+  - [ ] Forms
+  - [ ] Testimonial carousel
+- [ ] Build pages
+  - [ ] Home/Landing page
+  - [ ] About page
+  - [ ] Learning page for Agents
+  - [ ] Learning page for Customers
+  - [ ] CRM Portal login page
+- [ ] Implement responsive design with Tailwind CSS
+- [ ] Add social media integration
+
+## CRM Portal
+- [ ] Create dashboard layouts for different roles
+  - [ ] Customer dashboard
+  - [ ] Partner dashboard
+  - [ ] Employee dashboard
+  - [ ] Management dashboard
+- [ ] Implement role-based routing
+
+## Testing & Verification
+- [ ] Test all API endpoints
+- [ ] Test frontend functionality
+- [ ] Test authentication flows
+- [ ] Test form submissions
+- [ ] Cross-browser testing
+- [ ] Responsive design testing
+
+## Documentation
+- [ ] Create README with setup instructions
+- [ ] Document API endpoints
+- [ ] Create walkthrough of completed features

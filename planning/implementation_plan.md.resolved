@@ -1,0 +1,279 @@
+# Implementation Plan: PolicyBazaar-Inspired Insurance Platform Frontend
+
+## Overview
+
+Building a comprehensive frontend for an insurance comparison platform similar to PolicyBazaar. The backend is already complete with authentication, products, enquiries, and testimonials APIs. This plan focuses on creating a modern, responsive React frontend with Redux state management and Tailwind CSS styling.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Technology Stack Confirmation**
+> - Using **Tailwind CSS** as configured in the project (as seen in [tailwind.config.js](file:///c:/Users/USER/Desktop/TestProj/client/tailwind.config.js))
+> - Using **Redux Toolkit** for state management
+> - Using **React Router DOM** for routing
+> - Building **4 initial pages**: Home, About, Learning (Agents), Learning (Customers)
+
+> [!IMPORTANT]
+> **Design Approach**
+> The design will follow modern insurance platform aesthetics with:
+> - Clean, professional color scheme (blues, whites, greens for trust)
+> - Card-based layouts for products and features
+> - Responsive design (mobile-first approach)
+> - Smooth animations and transitions
+> - Clear call-to-action buttons
+
+## Proposed Changes
+
+### Core Application Setup
+
+#### [MODIFY] [App.js](file:///c:/Users/USER/Desktop/TestProj/client/src/App.js)
+- Set up React Router with routes for all pages
+- Add protected route wrapper for authenticated pages
+- Configure layout structure with Navbar and Footer
+
+#### [MODIFY] [index.js](file:///c:/Users/USER/Desktop/TestProj/client/src/index.js)
+- Wrap app with Redux Provider
+- Add Router configuration
+
+---
+
+### Redux State Management
+
+#### [NEW] [redux/store.js](file:///c:/Users/USER/Desktop/TestProj/client/src/redux/store.js)
+- Configure Redux store with combined reducers
+- Set up Redux DevTools integration
+
+#### [NEW] [redux/slices/authSlice.js](file:///c:/Users/USER/Desktop/TestProj/client/src/redux/slices/authSlice.js)
+- User authentication state (login, register, logout)
+- User profile data
+- Authentication token management
+
+#### [NEW] [redux/slices/productSlice.js](file:///c:/Users/USER/Desktop/TestProj/client/src/redux/slices/productSlice.js)
+- Products list state
+- Selected product details
+- Category filtering
+- Loading and error states
+
+#### [NEW] [redux/slices/enquirySlice.js](file:///c:/Users/USER/Desktop/TestProj/client/src/redux/slices/enquirySlice.js)
+- Enquiry submission state
+- User's enquiries list
+
+#### [NEW] [redux/slices/testimonialSlice.js](file:///c:/Users/USER/Desktop/TestProj/client/src/redux/slices/testimonialSlice.js)
+- Testimonials data
+- Loading states
+
+---
+
+### API Services Layer
+
+#### [NEW] [services/api.js](file:///c:/Users/USER/Desktop/TestProj/client/src/services/api.js)
+- Axios instance configuration
+- Base URL setup
+- Request/response interceptors for token handling
+
+#### [NEW] [services/authService.js](file:///c:/Users/USER/Desktop/TestProj/client/src/services/authService.js)
+- Login, register, logout API calls
+- Get current user profile
+
+#### [NEW] [services/productService.js](file:///c:/Users/USER/Desktop/TestProj/client/src/services/productService.js)
+- Fetch all products
+- Fetch products by category
+- Fetch single product details
+
+#### [NEW] [services/enquiryService.js](file:///c:/Users/USER/Desktop/TestProj/client/src/services/enquiryService.js)
+- Submit enquiry
+- Fetch user enquiries
+
+#### [NEW] [services/testimonialService.js](file:///c:/Users/USER/Desktop/TestProj/client/src/services/testimonialService.js)
+- Fetch testimonials
+
+---
+
+### Reusable Components
+
+#### [NEW] [components/Navbar.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/components/Navbar.jsx)
+- Responsive navigation bar
+- Logo and navigation links
+- Login/Register buttons or user menu
+- Mobile hamburger menu
+
+#### [NEW] [components/Footer.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/components/Footer.jsx)
+- Company information
+- Quick links
+- Social media icons
+- Copyright information
+
+#### [NEW] [components/InsuranceCard.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/components/InsuranceCard.jsx)
+- Reusable card for insurance categories
+- Icon, title, description
+- Click handler for navigation
+
+#### [NEW] [components/ProductCard.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/components/ProductCard.jsx)
+- Product display card
+- Features list
+- Call-to-action button
+
+#### [NEW] [components/TestimonialCard.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/components/TestimonialCard.jsx)
+- Customer testimonial display
+- Rating stars
+- Customer name and photo
+
+#### [NEW] [components/EnquiryForm.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/components/EnquiryForm.jsx)
+- Form for customer enquiries
+- Validation
+- Connected to Redux for submission
+
+#### [NEW] [components/Loading.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/components/Loading.jsx)
+- Loading spinner component
+- Reusable across application
+
+#### [NEW] [components/ProtectedRoute.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/components/ProtectedRoute.jsx)
+- Route wrapper for authenticated pages
+- Redirect to login if not authenticated
+- Role-based access control
+
+---
+
+### Pages
+
+#### [NEW] [pages/Home.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/pages/Home.jsx)
+- Hero section with headline and CTA
+- Insurance category cards (Term Life, Health, Investment, Car, Bike, etc.)
+- Quick quote section
+- Featured products
+- Testimonials carousel
+- Trust indicators (customers served, claims settled, etc.)
+- Why choose us section
+
+#### [NEW] [pages/About.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/pages/About.jsx)
+- Company story section
+- Mission and vision
+- Team members (placeholder)
+- Values and principles
+- Awards and recognition
+
+#### [NEW] [pages/LearningAgents.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/pages/LearningAgents.jsx)
+- Training resources for insurance agents
+- Documentation sections
+- Video tutorials (placeholders)
+- FAQ for agents
+- Contact support
+
+#### [NEW] [pages/LearningCustomers.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/pages/LearningCustomers.jsx)
+- Insurance education articles
+- How insurance works guides
+- Product comparison guides
+- FAQ for customers
+- Insurance calculator tools (placeholder)
+
+#### [NEW] [pages/Login.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/pages/Login.jsx)
+- Login form with email and password
+- Form validation
+- Link to register page
+- "Forgot password" placeholder
+
+#### [NEW] [pages/Register.jsx](file:///c:/Users/USER/Desktop/TestProj/client/src/pages/Register.jsx)
+- Registration form with name, email, password, phone, role
+- Form validation
+- Link to login page
+- Terms and conditions checkbox
+
+---
+
+### Styling
+
+#### [MODIFY] [index.css](file:///c:/Users/USER/Desktop/TestProj/client/src/index.css)
+- Add custom Tailwind utilities
+- Define color palette variables
+- Add custom animations
+- Typography styles
+
+#### [MODIFY] [tailwind.config.js](file:///c:/Users/USER/Desktop/TestProj/client/tailwind.config.js)
+- Extend theme with custom colors
+- Add custom fonts (if needed)
+- Configure spacing and breakpoints
+
+---
+
+### Utilities
+
+#### [NEW] [utils/constants.js](file:///c:/Users/USER/Desktop/TestProj/client/src/utils/constants.js)
+- Insurance categories list
+- API endpoints
+- App constants
+
+#### [NEW] [utils/helpers.js](file:///c:/Users/USER/Desktop/TestProj/client/src/utils/helpers.js)
+- Form validation helpers
+- Date formatting
+- Currency formatting
+
+## Verification Plan
+
+### Automated Tests
+
+No existing test files were found in the project. Since this is initial development, automated tests will be added in a future phase.
+
+### Manual Verification
+
+1. **Start Backend Server**
+   ```bash
+   cd c:\Users\USER\Desktop\TestProj\server
+   npm run dev
+   ```
+   - Verify MongoDB connection successful
+   - Ensure server running on port 5000
+
+2. **Start Frontend Development Server**
+   ```bash
+   cd c:\Users\USER\Desktop\TestProj\client
+   npm start
+   ```
+   - Verify app starts on http://localhost:3000
+   - Check for no console errors
+
+3. **Navigation Testing**
+   - Click through all navigation links (Home, About, Learning - Agents, Learning - Customers)
+   - Verify each page renders correctly
+   - Test mobile responsive menu (resize browser to mobile width)
+
+4. **Authentication Flow**
+   - Navigate to Register page
+   - Fill out registration form with test data
+   - Verify successful registration and redirect
+   - Logout
+   - Login with same credentials
+   - Verify successful login and user state in Redux DevTools
+
+5. **Home Page Features**
+   - Verify all insurance category cards display correctly
+   - Click on category cards and verify they work
+   - Check testimonials section displays
+   - Verify all images load properly
+   - Test responsive design on different screen sizes
+
+6. **API Integration**
+   - Open browser DevTools Network tab
+   - Register a new user and verify POST request to `/api/auth/register`
+   - Login and verify POST request to `/api/auth/login`
+   - Check if JWT token is stored properly
+   - Navigate to products section and verify GET request to `/api/products`
+
+7. **Visual Design**
+   - Verify color scheme is professional and consistent
+   - Check that all text is readable
+   - Verify hover effects on buttons and cards
+   - Test animations are smooth
+   - Ensure loading states display correctly
+
+8. **Form Validation**
+   - Try submitting empty forms
+   - Enter invalid email format
+   - Enter short password
+   - Verify appropriate error messages display
+
+### Browser Testing
+Use browser subagent to:
+- Navigate through all pages
+- Test user registration and login flow
+- Capture screenshots of key pages for visual verification
+- Test responsive design by resizing browser
