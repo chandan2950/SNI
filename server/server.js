@@ -11,6 +11,8 @@ const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const enquiryRoutes = require('./routes/enquiries');
 const testimonialRoutes = require('./routes/testimonials');
+const adminRoutes = require('./routes/admin');
+const executiveRoutes = require('./routes/executive');
 
 const app = express();
 
@@ -28,6 +30,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/testimonials', testimonialRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/executive', executiveRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {

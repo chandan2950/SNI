@@ -28,9 +28,90 @@ const enquirySchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['pending', 'contacted', 'closed'],
-        default: 'pending',
+        enum: ['New', 'Contacted', 'Interested', 'Converted', 'Lost'],
+        default: 'New',
     },
+    // CRM Assignment Fields
+    assignedTo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        default: null,
+    },
+    assignedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        default: null,
+    },
+    assignedAt: {
+        type: Date,
+        default: null,
+    },
+    // IRDA Compliance - Consent Management
+    consent: {
+        given: {
+            type: Boolean,
+            required: [true, 'Consent is required'],
+            default: false,
+        },
+        timestamp: {
+            type: Date,
+            default: Date.now,
+        },
+        ipAddress: {
+            type: String,
+            default: null,
+        },
+        privacyPolicyVersion: {
+            type: String,
+            default: '1.0',
+        },
+    },
+    // Remarks/Notes System
+    remarks: [
+        {
+            text: {
+                type: String,
+                required: true,
+            },
+            type: {
+                type: String,
+                enum: ['note', 'call', 'email', 'meeting'],
+                default: 'note',
+            },
+            addedBy: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User',
+                required: true,
+            },
+            addedAt: {
+                type: Date,
+                default: Date.now,
+            },
+        },
+    ],
+    // Activity Log for Audit Trail
+    activityLog: [
+        {
+            action: {
+                type: String,
+                required: true,
+                // Examples: 'created', 'assigned', 'status_changed', 'remark_added', 'reassigned'
+            },
+            performedBy: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User',
+                default: null,
+            },
+            timestamp: {
+                type: Date,
+                default: Date.now,
+            },
+            details: {
+                type: mongoose.Schema.Types.Mixed,
+                default: {},
+            },
+        },
+    ],
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -46,9 +127,31 @@ const enquirySchema = new mongoose.Schema({
     },
 });
 
+// Indexes for performance optimization
+enquirySchema.index({ assignedTo: 1 });
+enquirySchema.index({ status: 1 });
+enquirySchema.index({ createdAt: -1 });
+enquirySchema.index({ assignedTo: 1, status: 1 });
+
 // Update the updatedAt field before saving
 enquirySchema.pre('save', function (next) {
     this.updatedAt = Date.now();
+    next();
+});
+
+// Add initial activity log entry when creating new enquiry
+enquirySchema.pre('save', function (next) {
+    if (this.isNew) {
+        this.activityLog.push({
+            action: 'created',
+            performedBy: this.userId || null,
+            timestamp: new Date(),
+            details: {
+                productType: this.productType,
+                status: this.status,
+            },
+        });
+    }
     next();
 });
 
