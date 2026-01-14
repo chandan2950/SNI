@@ -9,9 +9,9 @@ const {
     getMyStats,
 } = require('../controllers/executiveController');
 
-// All routes require authentication and executive/employee role
+// All routes require authentication and executive/employee/admin/management role
 router.use(protect);
-router.use(authorize('executive', 'employee'));
+router.use(authorize('executive', 'employee', 'admin', 'management'));
 
 // Lead management routes
 router.get('/leads', getAssignedLeads);

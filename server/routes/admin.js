@@ -16,10 +16,10 @@ router.use(protect);
 router.use(authorize('admin', 'management'));
 
 // Lead management routes
+router.get('/leads/export', exportLeads); // Must come before /leads/:id routes
 router.get('/leads', getAllLeads);
 router.post('/leads/:id/assign', assignLead);
 router.put('/leads/:id/reassign', reassignLead);
-router.get('/leads/export', exportLeads);
 
 // Dashboard and statistics
 router.get('/dashboard/stats', getDashboardStats);
