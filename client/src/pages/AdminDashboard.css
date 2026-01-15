@@ -1,0 +1,365 @@
+.admin-dashboard {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    font-size: 2rem;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Statistics Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3b82f6;
+}
+
+.stat-card h3 {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.stat-new {
+    border-left-color: #3b82f6;
+}
+
+.stat-contacted {
+    border-left-color: #eab308;
+}
+
+.stat-interested {
+    border-left-color: #f97316;
+}
+
+.stat-converted {
+    border-left-color: #22c55e;
+}
+
+.stat-lost {
+    border-left-color: #ef4444;
+}
+
+.stat-total {
+    border-left-color: #8b5cf6;
+}
+
+.stat-assigned {
+    border-left-color: #06b6d4;
+}
+
+.stat-conversion {
+    border-left-color: #10b981;
+}
+
+/* Filters Section */
+.filters-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: #3b82f6;
+}
+
+.export-btn {
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.export-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Leads Table */
+.leads-table-container {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.leads-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leads-table thead {
+    background: #f9fafb;
+}
+
+.leads-table th {
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.leads-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1f2937;
+}
+
+.leads-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.assign-btn {
+    padding: 0.5rem 1rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.assign-btn:hover {
+    background: #2563eb;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #f3f4f6;
+    border-color: #3b82f6;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    color: #374151;
+    font-weight: 600;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.modal-content p {
+    margin-bottom: 1rem;
+    color: #6b7280;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.btn-secondary:hover {
+    background: #e5e7eb;
+}
+
+/* Loading and Error States */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: #6b7280;
+    font-size: 1.125rem;
+}
+
+.error-message {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-dashboard {
+        padding: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .filters-section {
+        flex-direction: column;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .leads-table-container {
+        overflow-x: auto;
+    }
+
+    .leads-table {
+        min-width: 800px;
+    }
+}
